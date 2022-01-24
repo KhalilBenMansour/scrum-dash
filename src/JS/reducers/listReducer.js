@@ -1,4 +1,10 @@
-import { ADD_CARD, ADD_LIST, DRAG_HAPPENED } from "../actionTypes/actionType";
+import {
+  ADD_CARD,
+  ADD_LIST,
+  DELETE_TASK,
+  DRAG_HAPPENED,
+  EDIT_TASK,
+} from "../actionTypes/actionType";
 let listId = 2;
 let cardId = 5;
 const initialState = [
@@ -60,7 +66,7 @@ const listReducer = (state = initialState, action) => {
       return newState;
     }
 
-    case DRAG_HAPPENED:
+    case DRAG_HAPPENED: {
       const {
         droppableIdStart,
         droppableIdEnd,
@@ -94,7 +100,24 @@ const listReducer = (state = initialState, action) => {
         listEnd.cards.splice(droppableIndexEnd, 0, ...card);
       }
       return newStatelist;
-
+    }
+    case DELETE_TASK: {
+      const { idList, idCard } = action.payload;
+      const listsCopy = [...state];
+      const list = listsCopy.find((list) => list.id === idList);
+      const cardIndex = list.cards.findIndex((card) => card.id === idCard);
+      list.cards.splice(cardIndex, 1);
+      return listsCopy;
+    }
+    case EDIT_TASK: {
+      const { lid, cid, cardText } = action.payload;
+      const listsCopys = [...state];
+      const listedit = listsCopys.find((list) => list.id === lid);
+      const cardIndex = listedit.cards.findIndex((card) => card.id === cid);
+      listedit.cards[cardIndex].text = cardText;
+      console.log(listsCopys);
+      return listsCopys;
+    }
     default:
       return state;
   }

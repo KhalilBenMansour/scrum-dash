@@ -33,6 +33,7 @@ const List = ({ title, cards, listId, index }) => {
                     index={index}
                     text={card.text}
                     id={card.id}
+                    listId={listId}
                   />
                 ))}
                 {provided.placeholder}
