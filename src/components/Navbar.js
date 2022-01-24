@@ -5,7 +5,9 @@ const Navbar = () => {
     <Fragment>
       <div className="header">
         <div className="container">
-          <div className="logo">SCRUMDASH</div>
+          <div className="logo" style={{ fontSize: "20px", color: "white" }}>
+            SCRUMDASH
+          </div>
           <div className="links">
             <span className="icon">
               <span></span>
