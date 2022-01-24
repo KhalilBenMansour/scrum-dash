@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import AddButton from "./AddButton";
 import List from "./List";
 
 const Board = () => {
@@ -13,11 +14,18 @@ const Board = () => {
           flexDirection: "row",
           flexWrap: "wrap",
           height: "100%",
+          backgroundColor: "gray",
         }}
       >
         {lists.map((list) => (
-          <List title={list.title} key={list.id} cards={list.cards} />
+          <List
+            title={list.title}
+            key={list.id}
+            listId={list.id}
+            cards={list.cards}
+          />
         ))}
+        <AddButton list />
       </div>
     </div>
   );

@@ -1,3 +1,6 @@
+import { ADD_CARD, ADD_LIST } from "../actionTypes/actionType";
+let listId = 2;
+let cardId = 3;
 const initialState = [
   {
     id: 0,
@@ -35,6 +38,22 @@ const initialState = [
 
 const listReducer = (state = initialState, action) => {
   switch (action.type) {
+    case ADD_LIST:
+      const newList = { title: action.payload, id: listId, cards: [] };
+      listId += 1;
+      return [...state, newList];
+
+    case ADD_CARD:
+      const newCard = { text: action.payload.text, id: cardId };
+      cardId += 1;
+      const newState = state.map((list) => {
+        if (list.id === action.payload.listId) {
+          return { ...list, cards: [...list.cards, newCard] };
+        } else {
+          return list;
+        }
+      });
+      return newState;
     default:
       return state;
   }
