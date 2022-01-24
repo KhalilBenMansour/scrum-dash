@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import { Draggable } from "react-beautiful-dnd";
 import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
+
 import { deleteCard, editCard } from "../JS/actions/cardAction";
 
 const Task = ({ text, id, index, listId }) => {
   const [editable, setEditable] = useState(false);
   const [cardTitle, setCardTitle] = useState(text);
-  const [showDelete, setShowDelete] = useState(false);
+
   const dispatch = useDispatch();
   const deleteTask = () => {
     dispatch(deleteCard(listId, id));
