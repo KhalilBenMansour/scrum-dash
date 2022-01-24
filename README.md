@@ -23,3 +23,6 @@ part4:
 - [x] add new list
 - [ ] update list title
 - [x] drage and drop list
+- [ ] make it responsive
+- [x] no boostrap no material
+- [ ] clean up code SCSS
