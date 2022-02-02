@@ -1,0 +1,36 @@
+.task-card {
+  background-color: white;
+  border-radius: 6px;
+  padding: 10px;
+  margin-bottom: 5px;
+  .task-form {
+    display: flex;
+    .form-control {
+      resize: none;
+      border: none;
+      outline: none;
+      width: 100%;
+    }
+  }
+  .task-view {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .task-edit-remove {
+      display: flex;
+      align-items: center;
+      .button-edit {
+        background-color: #10cab7;
+        color: white;
+        border: none;
+        cursor: pointer;
+        padding: 5px;
+        border-radius: 3px;
+      }
+      .delete-item {
+        padding: 5px;
+        cursor: pointer;
+      }
+    }
+  }
+}

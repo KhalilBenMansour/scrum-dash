@@ -56,8 +56,8 @@ const AddButton = ({ list, listId }) => {
     return (
       <div
         onClick={openForm}
+        className="openForButtonGroup"
         style={{
-          ...styles.openForButtonGroup,
           margin: "5px",
           padding: "5px",
           width: "250px",
@@ -80,61 +80,25 @@ const AddButton = ({ list, listId }) => {
       <div style={{ marginLeft: 8 }}>
         <div>
           <textarea
+            className="add-textarea"
             placeholder={placeholder}
             autoFocus
-            style={{
-              resize: "none",
-              border: "none",
-              outline: "none",
-              width: "260px",
-              height: "60px",
-            }}
             onBlur={closeForm}
             value={text}
             onChange={handleInputChange}
             onKeyDown={list ? handleSubmitList : handleSubmitCard}
           />
         </div>
-        <div style={{ ...styles.formButtonGroup }}>
-          <button
-            style={{
-              color: "white",
-              backgroundColor: "#5aac44",
-              border: "none",
-              padding: "7px",
-              cursor: "pointer",
-              borderRadius: "6px",
-            }}
-            onMouseDown={list ? handleAddList : handleAddCard}
-          >
+        <div className="formButtonGroup">
+          <button onMouseDown={list ? handleAddList : handleAddCard}>
             {buttonTitle}
           </button>
-          <p
-            style={{ marginLeft: "8px", cursor: "pointer" }}
-            onMouseDown={closeButtonHandler}
-          >
-            x
-          </p>
+          <p onMouseDown={closeButtonHandler}>x</p>
         </div>
       </div>
     );
   };
   return formOpen ? renderForm() : renderAddButton();
-};
-const styles = {
-  openForButtonGroup: {
-    display: "flex",
-    alignItems: "center",
-    cursor: "pointer",
-    borderRadius: 3,
-    height: 36,
-    paddingLeft: 10,
-  },
-  formButtonGroup: {
-    marginTop: "8",
-    display: "flex",
-    alignItems: "center",
-  },
 };
 
 export default AddButton;
