@@ -32,14 +32,7 @@ const Board = () => {
         <Droppable droppableId="columns" type="list" direction="horizontal">
           {(provided) => (
             <div
-              className="container"
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                flexWrap: "wrap",
-                height: "100%",
-                backgroundColor: "gray",
-              }}
+              className="container board-main"
               ref={provided.innerRef}
               {...provided.droppableProps}
             >

@@ -32,21 +32,14 @@ const Task = ({ text, id, index, listId }) => {
           {...provided.draggableProps}
           {...provided.dragHandleProps}
         >
-          <div
-            style={{
-              backgroundColor: "white",
-              borderRadius: "6px",
-              padding: "10px",
-              marginBottom: "5px",
-            }}
-          >
+          <div className="task-card">
             {editable ? (
               <form
                 onSubmit={(e) => {
                   e.preventDefault();
                   handleEditCard();
                 }}
-                style={{ display: "flex" }}
+                className="task-form"
               >
                 <input
                   className="form-control "
@@ -56,48 +49,21 @@ const Task = ({ text, id, index, listId }) => {
                   }}
                   autoFocus
                   value={cardTitle}
-                  style={{
-                    resize: "none",
-                    border: "none",
-                    outline: "none",
-                    width: "100%",
-                  }}
                   onBlur={handleEditCard}
                 />
                 <button onClick={handleEditCard}>save</button>
               </form>
             ) : (
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                }}
-              >
+              <div className="task-view">
                 <p>{text}</p>
-                <div
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                  }}
-                >
+                <div className="task-edit-remove">
                   <button
-                    style={{
-                      backgroundColor: "#10cab7",
-                      color: "white",
-                      border: "none",
-                      cursor: "pointer",
-                      padding: "5px",
-                      borderRadius: "3px",
-                    }}
+                    className="button-edit"
                     onClick={() => setEditable(true)}
                   >
                     EDIT
                   </button>
-                  <div
-                    style={{ padding: "5px", cursor: "pointer" }}
-                    onClick={deleteTask}
-                  >
+                  <div className="delete-item" onClick={deleteTask}>
                     x
                   </div>
                 </div>
